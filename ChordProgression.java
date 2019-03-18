@@ -1,5 +1,5 @@
-
-//makes chord progression based on progression type
+//Christopher Butler
+//This class takes a chord progression and key, and returns the notes available for such a piece.
 
 public class ChordProgression {
 	
@@ -22,25 +22,25 @@ public class ChordProgression {
 		
 	String currentKey[] = null;
 		
-	if (key.equals("C")) {  //sets Key to be whatever the user entered
+	if (key.equalsIgnoreCase("C")) {  //sets Key to be whatever the user entered
 		currentKey = CMajorScale;
 	}
-	else if (key.equals("D")) {
+	else if (key.equalsIgnoreCase("D")) {
 		currentKey = DMajorScale;
 	}
-	else if (key.equals("E")) {
+	else if (key.equalsIgnoreCase("E")) {
 		currentKey = EMajorScale;
 	}
-	else if (key.equals("F")) {
+	else if (key.equalsIgnoreCase("F")) {
 		currentKey = FMajorScale;
 	}
-	else if (key.equals("G")) {
+	else if (key.equalsIgnoreCase("G")) {
 		currentKey = GMajorScale;
 	}
-	else if (key.equals("A")) {
+	else if (key.equalsIgnoreCase("A")) {
 		currentKey = AMajorScale;
 	}
-	else if (key.equals("B")) {
+	else if (key.equalsIgnoreCase("B")) {
 		currentKey = BMajorScale;
 	}
 	
