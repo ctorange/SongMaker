@@ -13,7 +13,8 @@ import javax.sound.sampled.LineUnavailableException;
 public class SongMaker {
 public static String key;
 	public static void main(String[] args) {						
-	
+		
+		boolean exitStatus;
 		Random random = new Random(); //used for generating notes
 		
 		String measureOne[] = null;
@@ -24,6 +25,7 @@ public static String key;
 		Scanner scan = new Scanner (System.in);
 		int progType[] = new int[4]; //chord progressions can only have 4 chords for now.
 		
+		do {
 		System.out.print("Enter key of song (major only): ");
 		key = scan.next();
 		System.out.println("\nEnter chord progression as a list of integers. For instance, '1 5 6 4'");
@@ -36,7 +38,6 @@ public static String key;
 		
 		System.out.println("\nChord Progression: "+Arrays.toString(progType));
 		
-    	
 		System.out.println("Notes available for first measure: "+Arrays.toString(prog.getMeasure(1)));
 		System.out.println("Notes available for second measure: "+Arrays.toString(prog.getMeasure(2)));
 		System.out.println("Notes available for third measure: "+Arrays.toString(prog.getMeasure(3)));
@@ -121,10 +122,20 @@ public static String key;
 			saveToLilypond(songName,all_song_notes);
 			System.out.println("Saved as "+songName+".ly.\nTo generate a pdf of the score, download Lilypond from lilypond.org/download.html,\nthen right-click on the .ly file and click \"generate pdf\".");
 		}
+		
+		System.out.println("\nWould you like to make another song? (y/n): ");
+		String exitOrNot = scan.next();
+		if (exitOrNot.equalsIgnoreCase("y")) {
+			exitStatus = false;
+		}
 		else {
+			exitStatus = true;
 			System.exit(0);
 		}
-		scan.close();
+	}
+	while (exitStatus == false);
+	scan.close();
+	
 	}
 	public static void createTone(double Hertz, int volume) //Source of this method: http://digitalsoundandmusic.com/2-3-13-modeling-sound-in-java/
 		throws LineUnavailableException {
